@@ -5,6 +5,8 @@ import android.databinding.DataBindingUtil;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -16,10 +18,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         String textFieldValue ="";
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         MainActivityHandlers handler = new MainActivityHandlers();
         binding.setHandler(handler);
+
         final RadioGroup group1 = (RadioGroup) findViewById(R.id.orientation);
         group1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -34,5 +38,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void onImageClick(View view){
+        if (view.getId() == R.id.imageButton){
+            ImageView imageView = (ImageView) findViewById(R.id.myIcon);
+            imageView.setImageResource(R.drawable.ic_tethering);
+        }
     }
 }
